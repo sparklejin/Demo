@@ -6,6 +6,7 @@ import java.awt.*;
 import controller.GameController;
 import model.MapMatrix;
 import view.FrameUtil;
+import view.level.LevelFrame;
 
 public class GameFrame extends JFrame {
 
@@ -13,6 +14,7 @@ public class GameFrame extends JFrame {
     private JButton restartBtn;
     private JButton loadBtn;
 
+    private JButton returnBTn;
     private JLabel stepLabel;
     private GamePanel gamePanel;
 
@@ -27,6 +29,7 @@ public class GameFrame extends JFrame {
 
         this.restartBtn = FrameUtil.createButton(this, "Restart", new Point(gamePanel.getWidth() + 80, 120), 80, 50);
         this.loadBtn = FrameUtil.createButton(this, "Load", new Point(gamePanel.getWidth() + 80, 210), 80, 50);
+        this.returnBTn = FrameUtil.createButton(this, "Return", new Point(gamePanel.getWidth() + 80, 300), 80, 50);
         this.stepLabel = FrameUtil.createJLabel(this, "Start", new Font("serif", Font.ITALIC, 22), new Point(gamePanel.getWidth() + 80, 70), 180, 50);
         gamePanel.setStepLabel(stepLabel);
 
@@ -39,6 +42,11 @@ public class GameFrame extends JFrame {
             System.out.println(string);
             gamePanel.requestFocusInWindow();//enable key listener
         });
+        this.returnBTn.addActionListener(e -> {
+            LevelFrame.getFrameController().returnLevelFrame(this);
+            gamePanel.requestFocusInWindow();
+        });
+
         //todo: add other button here
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
