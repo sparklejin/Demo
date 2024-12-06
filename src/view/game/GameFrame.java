@@ -15,7 +15,8 @@ public class GameFrame extends JFrame {
     private JButton restartBtn;
     private JButton loadBtn;
 
-    private JButton returnBTn;
+    private JButton returnBtn;
+
     private JLabel stepLabel;
     private GamePanel gamePanel;
 
@@ -42,7 +43,9 @@ public class GameFrame extends JFrame {
         this.controller.setGameFrame(this);
         this.restartBtn = FrameUtil.createButton(this, "Restart", new Point(gamePanel.getWidth() + 80, 120), 80, 50);
         this.loadBtn = FrameUtil.createButton(this, "Load", new Point(gamePanel.getWidth() + 80, 210), 80, 50);
-        this.returnBTn = FrameUtil.createButton(this, "Return", new Point(gamePanel.getWidth() + 80, 300), 80, 50);
+
+        this.returnBtn = FrameUtil.createButton(this, "Return", new Point(gamePanel.getWidth() + 80, 300), 80, 50);
+
         this.stepLabel = FrameUtil.createJLabel(this, "Start", new Font("serif", Font.ITALIC, 22), new Point(gamePanel.getWidth() + 80, 70), 180, 50);
         gamePanel.setStepLabel(stepLabel);
 
@@ -59,9 +62,14 @@ public class GameFrame extends JFrame {
         });
         this.loadBtn.addActionListener(e -> {
             String path = JOptionPane.showInputDialog(this, "Input path:");
-            //String path = String.format("resource/%s/game1.txt",user.name());
-            LevelFrame.getFrameController().loadGame(path, this);
-            //System.out.println(string);
+
+            //String path= String.format("resource/%s/game1.txt",user.name());
+            LevelFrame.getFrameController().loadGame(path);
+            gamePanel.requestFocusInWindow();//enable key listener
+        });
+        this.returnBtn.addActionListener(e -> {
+            LevelFrame.getFrameController().returnLevelFrame(this);
+
             gamePanel.requestFocusInWindow();//enable key listener
         });
         this.returnBTn.addActionListener(e -> {

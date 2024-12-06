@@ -3,6 +3,7 @@ package view.game;
 import controller.GameController;
 import model.Direction;
 import model.MapMatrix;
+import view.FrameUtil;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -117,11 +118,11 @@ public class GamePanel extends ListenerPanel {
     }
 
 
-
     public void restartGame() {
         this.steps = 0;
         for (int i = 0; i < grids.length; i++) {
             for (int j = 0; j < grids[i].length; j++) {
+
                 if (grids[i][j].getHero()!=null){
                     grids[i][j].removeHeroFromGrid();
                 }
@@ -129,6 +130,7 @@ public class GamePanel extends ListenerPanel {
                     grids[i][j].removeBoxFromGrid();
                 }
                 switch (model.getId(i,j)/10) {
+
                     case 1:
                         grids[i][j].setBoxInGrid(new Box(GRID_SIZE - 10, GRID_SIZE - 10));
                         break;
@@ -140,5 +142,5 @@ public class GamePanel extends ListenerPanel {
             }
         }
         this.stepLabel.setText(String.format("Start"));
-    }
+
 }

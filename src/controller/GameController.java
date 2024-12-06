@@ -2,7 +2,12 @@ package controller;
 
 import model.Direction;
 import model.MapMatrix;
-import view.game.*;
+
+import view.game.Box;
+import view.game.GamePanel;
+import view.game.GridComponent;
+import view.game.Hero;
+
 
 /**
  * It is a bridge to combine GamePanel(view) and MapMatrix(model) in one game.

@@ -19,6 +19,7 @@ package model;
  */
 public class MapMatrix {
     int[][] matrix;
+    private final int[][] initialMatrix;
 
 
     private final int[][] initialMatrix;
@@ -26,10 +27,11 @@ public class MapMatrix {
 
     public MapMatrix(int[][] matrix) {
         this.matrix = matrix;
-        initialMatrix = copyArray(matrix);
-    }
 
-    private int[][] copyArray(int[][] a){
+        initialMatrix=copyMatrix(matrix);
+    }
+    private int[][] copyMatrix(int[][] a) {
+
         int[][] b = new int[a.length][a[0].length];
         for (int i = 0; i < a.length; i++) {
             for (int j = 0; j < a[i].length; j++) {
@@ -39,11 +41,10 @@ public class MapMatrix {
         return b;
     }
 
+    public void resetMapMatrix() {
+        this.matrix = copyMatrix(initialMatrix);
 
-    public void resetMapMatrix(){
-        this.matrix = copyArray(initialMatrix);
     }
-
     public int getWidth() {
         return this.matrix[0].length;
     }

@@ -17,6 +17,7 @@ public class Box extends JComponent {
         this.atTarget = atTarget;
     }
 
+
     public Box(int width, int height) {
         this.setSize(width, height);
         this.setLocation(5, 5);
@@ -28,6 +29,7 @@ public class Box extends JComponent {
         Border border = BorderFactory.createLineBorder(Color.black, 1);
         this.setBorder(border);
     }
+
 
     public int getValue() {
         return value;
