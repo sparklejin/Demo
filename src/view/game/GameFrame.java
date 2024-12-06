@@ -24,6 +24,12 @@ public class GameFrame extends JFrame {
     private JButton leftBTn;
     private JButton rightBTn;
 
+    private JButton cancel;
+
+    private WinFrame winFrame = new WinFrame();
+    private LoseFrame loseFrame ;
+
+
 
     public GameFrame(int width, int height, MapMatrix mapMatrix) {
         this.setTitle("2024 CS109 Project Demo");
@@ -33,7 +39,7 @@ public class GameFrame extends JFrame {
         gamePanel.setLocation(30, height / 2 - gamePanel.getHeight() / 2);
         this.add(gamePanel);
         this.controller = new GameController(gamePanel, mapMatrix);
-
+        this.controller.setGameFrame(this);
         this.restartBtn = FrameUtil.createButton(this, "Restart", new Point(gamePanel.getWidth() + 80, 120), 80, 50);
         this.loadBtn = FrameUtil.createButton(this, "Load", new Point(gamePanel.getWidth() + 80, 210), 80, 50);
         this.returnBTn = FrameUtil.createButton(this, "Return", new Point(gamePanel.getWidth() + 80, 300), 80, 50);
@@ -44,6 +50,7 @@ public class GameFrame extends JFrame {
         this.downBTn = FrameUtil.createButton(this, "Down", new Point(gamePanel.getWidth() + 300, 300), 80, 50);
         this.leftBTn = FrameUtil.createButton(this, "Left", new Point(gamePanel.getWidth() + 200, 300), 80, 50);
         this.rightBTn = FrameUtil.createButton(this, "Right", new Point(gamePanel.getWidth() + 400, 300), 80, 50);
+        this.cancel = FrameUtil.createButton(this, "cancel", new Point(gamePanel.getWidth() + 400, 120), 80, 50);
 
 
         this.restartBtn.addActionListener(e -> {
@@ -87,10 +94,25 @@ public class GameFrame extends JFrame {
             }
         });
 
+        this.cancel.addActionListener(e -> {
+            System.out.println("over");
+            this.dispose();
+        });
+
 
         //todo: add other button here
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+    }
+
+    public void win(){
+        winFrame.setVisible(true);
+        this.dispose();
+    }
+    public void lose(){
+        loseFrame = new LoseFrame(this.controller);
+        loseFrame.setVisible(true);
+        this.setVisible(false);
     }
 
 }

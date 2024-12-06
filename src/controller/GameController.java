@@ -2,10 +2,7 @@ package controller;
 
 import model.Direction;
 import model.MapMatrix;
-import view.game.Box;
-import view.game.GamePanel;
-import view.game.GridComponent;
-import view.game.Hero;
+import view.game.*;
 
 /**
  * It is a bridge to combine GamePanel(view) and MapMatrix(model) in one game.
@@ -14,6 +11,16 @@ import view.game.Hero;
 public class GameController {
     private final GamePanel view;
     private final MapMatrix model;
+
+    private GameFrame gameFrame;
+
+    public GameFrame getGameFrame() {
+        return gameFrame;
+    }
+
+    public void setGameFrame(GameFrame gameFrame) {
+        this.gameFrame = gameFrame;
+    }
 
     public GameController(GamePanel view, MapMatrix model) {
         this.view = view;
@@ -81,6 +88,7 @@ public class GameController {
         }
         if (check==true){
             System.out.println("win");
+            this.gameFrame.win();
         }
     }
 
@@ -106,6 +114,7 @@ public class GameController {
         }
         if (check ==false){
             System.out.println("you lose");
+            this.gameFrame.lose();
         }
 
     }
