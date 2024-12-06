@@ -13,6 +13,22 @@ public class GridComponent extends JComponent {
     private Box box;
     static Color color = new Color(246, 246, 229);
 
+    public Hero getHero() {
+        return hero;
+    }
+
+    public void setHero(Hero hero) {
+        this.hero = hero;
+    }
+
+    public Box getBox() {
+        return box;
+    }
+
+    public void setBox(Box box) {
+        this.box = box;
+    }
+
     public GridComponent(int row, int col, int id, int gridSize) {
         this.setSize(gridSize, gridSize);
         this.row = row;

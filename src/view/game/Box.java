@@ -7,6 +7,7 @@ import java.awt.*;
 public class Box extends JComponent {
     private final int value = 10;
 
+
     public Box(int width, int height) {
         this.setSize(width, height);
         this.setLocation(5, 5);
@@ -18,6 +19,7 @@ public class Box extends JComponent {
         Border border = BorderFactory.createLineBorder(Color.black, 1);
         this.setBorder(border);
     }
+
 
     public int getValue() {
         return value;

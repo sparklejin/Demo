@@ -2,6 +2,7 @@ package controller;
 
 import model.Direction;
 import model.MapMatrix;
+import view.game.Box;
 import view.game.GamePanel;
 import view.game.GridComponent;
 import view.game.Hero;
@@ -22,6 +23,8 @@ public class GameController {
 
     public void restartGame() {
         System.out.println("Do restart game here");
+        this.model.resetMapMatrix();
+        this.view.restartGame();
     }
 
     public boolean doMove(int row, int col, Direction direction) {

@@ -3,6 +3,7 @@ package view.game;
 import controller.GameController;
 import model.Direction;
 import model.MapMatrix;
+import view.FrameUtil;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -108,4 +109,27 @@ public class GamePanel extends ListenerPanel {
     public GridComponent getGridComponent(int row, int col) {
         return grids[row][col];
     }
+
+    public void restartGame() {
+        this.steps = 0;
+        for (int i = 0; i < grids.length; i++) {
+            for (int j = 0; j < grids[i].length; j++) {
+                if(grids[i][j].getHero()!=null){
+                    grids[i][j].removeHeroFromGrid();
+                }
+                if(grids[i][j].getBox()!=null){
+                    grids[i][j].removeBoxFromGrid();
+                }
+                switch (model.getId(i, j) / 10){
+                    case 1:
+                        grids[i][j].setBoxInGrid(new Box(GRID_SIZE - 10, GRID_SIZE - 10));
+                        break;
+                    case 2:
+                        this.hero = new Hero(GRID_SIZE - 16, GRID_SIZE - 16, i, j);
+                        grids[i][j].setHeroInGrid(hero);
+                        break;
+                }
+            }
+        }
+    }//new,bug
 }
