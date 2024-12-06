@@ -98,4 +98,20 @@ public class GridComponent extends JComponent {
         this.repaint();
         return b;
     }
+
+    public Hero getHero() {
+        return hero;
+    }
+
+    public void setHero(Hero hero) {
+        this.hero = hero;
+    }
+
+    public Box getBox() {
+        return box;
+    }
+
+    public void setBox(Box box) {
+        this.box = box;
+    }
 }
