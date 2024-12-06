@@ -9,7 +9,9 @@ import javax.swing.*;
 import java.awt.*;
 
 public class LevelFrame extends JFrame {
+
     private static FrameController frameController=new FrameController();
+
     public LevelFrame(int width, int height) {
         this.setTitle("Level");
         this.setLayout(null);
@@ -27,7 +29,7 @@ public class LevelFrame extends JFrame {
                     {1, 0, 2, 10, 0, 1},
                     {1, 1, 1, 1, 1, 1},
             });
-            GameFrame gameFrame = new GameFrame(600, 450, mapMatrix);
+            GameFrame gameFrame = new GameFrame(850, 450, mapMatrix);
             this.setVisible(false);
             gameFrame.setVisible(true);
         });
@@ -82,18 +84,20 @@ public class LevelFrame extends JFrame {
                     {1,0,0,1,0,2,0,1},
                     {1,1,1,1,1,1,1,1}
             });
-            GameFrame gameFrame = new GameFrame(600, 450, mapMatrix);
+            GameFrame gameFrame = new GameFrame(850, 450, mapMatrix);
             this.setVisible(false);
             gameFrame.setVisible(true);
         });
 
 
-        //todo: complete all level.
+
         frameController.setLevelFrame(this);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
+
     public static FrameController getFrameController(){
         return frameController;
 }
+
 }

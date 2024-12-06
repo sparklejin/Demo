@@ -6,6 +6,16 @@ import java.awt.*;
 
 public class Box extends JComponent {
     private final int value = 10;
+    private boolean atTarget = false;
+    private boolean atCorner = false;
+
+    public boolean isAtTarget() {
+        return atTarget;
+    }
+
+    public void setAtTarget(boolean atTarget) {
+        this.atTarget = atTarget;
+    }
 
 
     public Box(int width, int height) {
@@ -23,5 +33,14 @@ public class Box extends JComponent {
 
     public int getValue() {
         return value;
+    }
+
+    public void checkTarget(int i) {
+        if (i==12){
+            this.setAtTarget(true);
+
+        } else {
+            this.setAtTarget(false);
+        }
     }
 }

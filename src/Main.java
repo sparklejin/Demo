@@ -1,3 +1,4 @@
+import view.game.WinFrame;
 import view.level.LevelFrame;
 import view.login.LoginFrame;
 
@@ -11,6 +12,7 @@ public class Main {
             LevelFrame levelFrame = new LevelFrame(500,200);
             levelFrame.setVisible(false);
             loginFrame.setLevelFrame(levelFrame);
+
         });
     }
 }

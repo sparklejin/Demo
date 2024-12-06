@@ -24,6 +24,13 @@ public class GamePanel extends ListenerPanel {
 
     private Hero hero;
 
+    public Hero getHero() {
+        return hero;
+    }
+
+    public void setHero(Hero hero) {
+        this.hero = hero;
+    }
 
     public GamePanel(MapMatrix model) {
         this.setVisible(true);
@@ -110,17 +117,20 @@ public class GamePanel extends ListenerPanel {
         return grids[row][col];
     }
 
+
     public void restartGame() {
         this.steps = 0;
         for (int i = 0; i < grids.length; i++) {
             for (int j = 0; j < grids[i].length; j++) {
-                if(grids[i][j].getHero()!=null){
+
+                if (grids[i][j].getHero()!=null){
                     grids[i][j].removeHeroFromGrid();
                 }
-                if(grids[i][j].getBox()!=null){
+                if(grids[i][j].getBox()!= null){
                     grids[i][j].removeBoxFromGrid();
                 }
-                switch (model.getId(i, j) / 10){
+                switch (model.getId(i,j)/10) {
+
                     case 1:
                         grids[i][j].setBoxInGrid(new Box(GRID_SIZE - 10, GRID_SIZE - 10));
                         break;
@@ -131,5 +141,6 @@ public class GamePanel extends ListenerPanel {
                 }
             }
         }
-    }//new,bug
+        this.stepLabel.setText(String.format("Start"));
+
 }
