@@ -112,6 +112,7 @@ public class GamePanel extends ListenerPanel {
 
 
     public void restartGame() {
+        this.steps = 0;
         for (int i = 0; i < grids.length; i++) {
             for (int j = 0; j < grids[i].length; j++) {
                 if (grids[i][j].getHero()!=null){
