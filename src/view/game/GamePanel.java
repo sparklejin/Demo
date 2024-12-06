@@ -23,6 +23,13 @@ public class GamePanel extends ListenerPanel {
 
     private Hero hero;
 
+    public Hero getHero() {
+        return hero;
+    }
+
+    public void setHero(Hero hero) {
+        this.hero = hero;
+    }
 
     public GamePanel(MapMatrix model) {
         this.setVisible(true);

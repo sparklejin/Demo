@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 import controller.GameController;
+import model.Direction;
 import model.MapMatrix;
 import view.FrameUtil;
 import view.level.LevelFrame;
@@ -17,6 +18,12 @@ public class GameFrame extends JFrame {
     private JButton returnBTn;
     private JLabel stepLabel;
     private GamePanel gamePanel;
+
+    private JButton upBTn;
+    private JButton downBTn;
+    private JButton leftBTn;
+    private JButton rightBTn;
+
 
     public GameFrame(int width, int height, MapMatrix mapMatrix) {
         this.setTitle("2024 CS109 Project Demo");
@@ -33,6 +40,12 @@ public class GameFrame extends JFrame {
         this.stepLabel = FrameUtil.createJLabel(this, "Start", new Font("serif", Font.ITALIC, 22), new Point(gamePanel.getWidth() + 80, 70), 180, 50);
         gamePanel.setStepLabel(stepLabel);
 
+        this.upBTn = FrameUtil.createButton(this, "Up", new Point(gamePanel.getWidth() + 300, 210), 80, 50);
+        this.downBTn = FrameUtil.createButton(this, "Down", new Point(gamePanel.getWidth() + 300, 300), 80, 50);
+        this.leftBTn = FrameUtil.createButton(this, "Left", new Point(gamePanel.getWidth() + 200, 300), 80, 50);
+        this.rightBTn = FrameUtil.createButton(this, "Right", new Point(gamePanel.getWidth() + 400, 300), 80, 50);
+
+
         this.restartBtn.addActionListener(e -> {
             controller.restartGame();
             gamePanel.requestFocusInWindow();//enable key listener
@@ -48,6 +61,32 @@ public class GameFrame extends JFrame {
             LevelFrame.getFrameController().returnLevelFrame(this);
             gamePanel.requestFocusInWindow();
         });
+
+        this.upBTn.addActionListener(e -> {
+            System.out.println("Click VK_Up");
+            if( controller.doMove(gamePanel.getHero().getRow(), gamePanel.getHero().getCol(), Direction.UP)){
+                this.gamePanel.afterMove();
+            }
+        });
+        this.downBTn.addActionListener(e -> {
+            System.out.println("Click VK_Down");
+            if( controller.doMove(gamePanel.getHero().getRow(), gamePanel.getHero().getCol(), Direction.DOWN)){
+                this.gamePanel.afterMove();
+            }
+        });
+        this.leftBTn.addActionListener(e -> {
+            System.out.println("Click VK_Left");
+            if( controller.doMove(gamePanel.getHero().getRow(), gamePanel.getHero().getCol(), Direction.LEFT)){
+                this.gamePanel.afterMove();
+            }
+        });
+        this.rightBTn.addActionListener(e -> {
+            System.out.println("Click VK_Right");
+            if( controller.doMove(gamePanel.getHero().getRow(), gamePanel.getHero().getCol(), Direction.RIGHT)){
+                this.gamePanel.afterMove();
+            }
+        });
+
 
         //todo: add other button here
         this.setLocationRelativeTo(null);
