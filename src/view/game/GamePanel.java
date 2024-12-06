@@ -139,5 +139,6 @@ public class GamePanel extends ListenerPanel {
                 }
             }
         }
+        this.stepLabel.setText(String.format("Start"));
     }
 }

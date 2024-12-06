@@ -1,3 +1,4 @@
+import view.game.WinFrame;
 import view.level.LevelFrame;
 import view.login.LoginFrame;
 
