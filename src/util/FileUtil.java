@@ -1,11 +1,14 @@
 package util;
 
+
 import javax.imageio.IIOException;
+
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
+
 
 public class FileUtil {
     public List<String> readFileToList(String filePath){
@@ -26,3 +29,4 @@ public class FileUtil {
         }
     }
 }
+
